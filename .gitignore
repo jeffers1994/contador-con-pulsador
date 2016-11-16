@@ -1,0 +1,129 @@
+int A = 13;
+int B = 12;
+int C = 11;
+int D = 10;
+int contador = 0;
+int pulsador = 7;
+int unidades = 8;
+int decenas = 9;
+int valor_unidad = 0;
+int valor_decena = 0;
+
+void setup() {
+  
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(pulsador, INPUT);
+  pinMode(unidades, OUTPUT);
+  pinMode(decenas, OUTPUT);
+}
+
+void loop() {
+
+  if (digitalRead(pulsador) == HIGH) {
+    delay(250);
+
+    if (contador < 99) {
+      contador=contador+1;
+
+      valor_decena = (contador) / 10;
+      digitalWrite(unidades, LOW);
+      digitalWrite(decenas, HIGH);
+      contador_display(valor_decena);
+      delay(100);
+
+      valor_unidad = contador - (valor_decena * 10);
+      digitalWrite(unidades, HIGH);
+      digitalWrite(decenas, LOW);
+      contador_display(valor_unidad);
+      delay(100);
+    }
+  }
+}
+
+void contador_display (int numero) {
+
+  switch (numero) {
+    case 0:
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 1:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 2:
+      digitalWrite(A, LOW);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 3:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, LOW);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 4:
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 5:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, LOW);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 6:
+      digitalWrite(A, LOW);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 7:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, LOW);
+      delay(250);
+      break;
+
+    case 8:
+      digitalWrite(A, LOW);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, HIGH);
+      delay(250);
+      break;
+
+    case 9:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, LOW);
+      digitalWrite(C, LOW);
+      digitalWrite(D, HIGH);
+      delay(250);
+      break;
+  }
+}
